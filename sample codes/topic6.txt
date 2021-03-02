@@ -1,0 +1,71 @@
+# Install OpenCV packages
+$ sudo apt-get install ros-kinetic-image-transport ros-kinetic-cv-bridge ros-kinetic-vision-opencv python-opencv libopencv-dev ros-kinetic-image-proc
+
+# Setup Webcam in Virtualbox
+
+##  Refer to following website on instructions:
+https://scribles.net/using-webcam-in-virtualbox-guest-os-on-windows-host/
+
+1 From the VirtualBox Download page (i.e. http://download.virtualbox.org/virtualbox/), download the extension pack which has the same version as your VirtualBox. In my case, my VirtualBox is v6.1.4 so I downloaded this:
+http://download.virtualbox.org/virtualbox/6.1.4/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack
+
+2 Launch “Oracle VirtualBox Manager” and navigate to “File” -> “Preferences”.
+
+3 In ‘Preferences’ window, select ‘Extensions’.
+
+4 Press ‘Add new package’ icon.
+
+5 Navigate and select the downloaded extension pack and install it.
+
+6 On WINDOWS Command Prompt (search command prompt in search bar in your WINDOWS platform), type the following:
+cd c:\Program Files\Oracle\VirtualBox
+
+7 Next, type the following to list the available cameras
+VBoxManage List webcams
+## Take note of the camera that you desire to use (e.g. .1 or .2, etc)
+
+8 Next, type the following to attach webcam(s) you want to use on your Virtual Machine.
+VboxManage controlvm "Ubuntu 16.04" webcam attach .X
+### Change "X" to the camera no. that you are using! ###
+*Note that you have to attach the webcam(s) each time you boot your Ubuntu system on the virtual machine
+
+9 You may check if the procedures are done properly by searching on Ubuntu for Cheese Webcam Booth application; open it and see if your webcam can be used
+
+# Activity: Line Following
+
+1. Navigate to Home >> .gazebo (type clt-H to review hidden files) >> models
+
+2. Copy and paste all files under “models” in unzipped file to this folder 
+
+4. Copy “line.launch” to the launch folder 
+
+5. Copy “follow_line.py” and “move_robot_turtlebot3.py” files to the src foldoer 
+
+6. Copy “line.world” file to src >> turtlebot3_simulations >> turtlebot3_gazebo >> worlds
+
+7. Load TB3 with OM in line.world in Gazebo
+$ roslaunch demo1 line.launch
+
+8. Run node example to utilize OpenCV to detect the yellow line and make the TB3 follow it
+$ rosrun demo1 follow_line.py
+
+# Activity: Gesture Controlled Navigation
+
+1. Launch Gazebo in TurtleBot3 World
+
+	$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+2. Run node that allows you to use finger gestures to control the TB3
+
+	$ rosrun demo1 gesture_control.py
+
+3. Adjust camera until the bounding box is within blue background
+
+4. Try the gesture control by changing your finger gestures into 1, 2, 3 or 4 
+
+	1: Forward
+	2: Left (Counterclockwise)
+	3: Right (Clockwise)
+	4: Backwards
+ No Input: Brake
+

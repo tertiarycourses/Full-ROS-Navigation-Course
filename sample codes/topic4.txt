@@ -1,0 +1,84 @@
+<<<<<<< HEAD
+# Activity: Move the TurtleBot3 with Python 
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+$ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
+(terminal 3)
+$ rosrun demo1 trajectory.py
+
+# Activity: Get Laser Scan Data
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+$ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
+(terminal 3)
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+(terminal 4)
+$ rosrun demo1 laser_data.py
+
+# Activity: Avoid Obstacle
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+$ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
+(terminal 3)
+$ python demo1 avoid_obstacle.py
+
+
+# Activity: Initial Pose Estimate
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_map.yaml
+(terminal 3)
+$ rosrun demo1 initial_pose.py
+
+# Activity: Path Planning
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_map.yaml
+(terminal 3)
+$ rosrun demo1 initial_pose.py
+$ rosrun demo1 path_planning.py
+
+# Activity: Autonomous SLAM
+
+(terminal 1) 
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2) 
+roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+(terminal 3) 
+$ rosrun demo1 autonnomous_exploring.py
+(terminal 4) rosrun map_server map_saver -f ~/my_map2
+=======
+# Get Started
+
+$ sudo apt-get install ros-kinetic-franka-description
+
+$ cd ~/ws_moveit/src
+$ rm -rf panda_moveit_config
+$ atkin clean panda_moveit_config
+
+# Step 1: Start
+
+$ rosecore
+$ roslaunch moveit_setup_assistant setup_assistant.launch
+
+# Step 9: Gazebo Simulation
+
+$ roslaunch gazebo_ros empty_world.launch paused:=true use_sim_time:=false gui:=true throttled:=false recording:=false debug:=true
+
+% rosrun gazebo_ros spawn_model -file </path_to_new_urdf/file_name.urdf> -urdf -x 0 -y 0 -z 1 -model panda
+
+# Activity: Testing Panda Robot
+
+$ roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
+
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e

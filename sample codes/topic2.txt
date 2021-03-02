@@ -1,0 +1,161 @@
+
+<<<<<<< HEAD
+# Activity: Virtual SLAM with Gmapping
+
+(terminal 1) roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2) roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+(terminal 3) roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+(terminal 4) rosrun map_server map_saver -f ~/my_map
+
+# Activity: Virtual SLAM with Frontier Exploration
+
+## Install Frontier Exploration package
+$ sudo apt get install ros-kinetic-frontier-exploration ros-kinetic-navigation-stage
+
+(terminal 1) roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2) roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=frontier_exploration
+(terminal 3) rosrun map_server map_saver -f ~/my_map
+=======
+# Install OpenManipulator-X packages
+
+<<<<<<< HEAD
+$ cd ~/catkin_ws/src/
+$ git clone https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+$ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench.git
+$ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_simulations.git
+$ git clone https://github.com/ROBOTIS-GIT/robotis_manipulator.git
+$ cd ~/catkin_ws && catkin_make
+
+# Activity: OM Keyboard Control
+
+1. Launch the Gazebo
+$ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
+
+2. Activate the Controller
+$ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+
+3. Activate the Keyboard Control
+$ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+
+# Activity: OM GUI Control - FK and IK
+
+1. Launch the Gazebo
+$ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
+
+2. Activate the Controller
+$ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+
+3 .Open the GUI Control
+$ roslaunch open_manipulator_control_gui open_manipulator_control_gui.launch
+
+# Acitivity: FK with Python
+
+$ rosrun <your_pkg> control_om.py
+$ python control_om.py
+
+# Acitivity: IK with Python
+
+$ rosrun <your_pkg> control_om_ik.py
+$ python control_om_ik.py
+$ rosrun <your_pkg> control_om_ik_withorientation.py
+$ python control_om_ik_withorientation.py
+
+# Activity: Handing Guiding
+
+$ cd ~/catkin_ws && catkin_make
+$ roslaunch open_manipulator_gazebo open_manipulator_gazebo.launch
+$ roslaunch open_manipulator_controller open_manipulator_controller.launch use_platform:=false
+$ roslaunch open_manipulator_save_and_load save_and_load.launch
+$ roslaunch open_manipulator_teleop open_manipulator_teleop_keyboard.launch
+
+=======
+# Activity: Virtual SLAM
+>>>>>>> 6bd3c4007b775515210ab0d2b8b289202263bc6a
+
+# Install Turtlebot3 Packages
+
+$ sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-teleop-twist-keyboard ros-kinetic-laser-proc ros-kinetic-rgbd-launch ros-kinetic-depthimage-to-laserscan ros-kinetic-rosserial-arduino ros-kinetic-rosserial-python ros-kinetic-rosserial-server ros-kinetic-rosserial-client ros-kinetic-rosserial-msgs ros-kinetic-amcl ros-kinetic-map-server ros-kinetic-move-base ros-kinetic-urdf ros-kinetic-xacro ros-kinetic-compressed-image-transport ros-kinetic-rqt-image-view ros-kinetic-gmapping ros-kinetic-navigation ros-kinetic-interactive-markers
+$ cd ~/catkin_ws/src/
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+$ cd ~/catkin_ws && catkin_make
+
+
+# Install Turtlebot with OpenManipulator
+
+$ cd ~/catkin_ws/src/
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+$ sudo apt install ros-kinetic-ros-control* && ros-kinetic-control* && ros-kinetic-moveit*
+$ cd ~/catkin_ws && catkin_make
+
+# OpenCR setup
+
+$ export OPENCR_PORT=/dev/ttyACM0
+$ export OPENCR_MODEL=om_with_tb3
+$ rm -rf ./opencr_update.tar.bz2
+$ wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS1/latest/opencr_update.tar.bz2
+$ tar -xvf opencr_update.tar.bz2
+$ cd ./opencr_update && ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr && cd ..
+
+# Activity:  Launch TB3+OM on Gazebo
+
+$ roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+
+Activity: GUI Control on TB3+OM
+
+$ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+
+# Install RPi Camera in ROS
+
+$ sudo apt-get install ros-kinetic-compressed-image-transport ros-kinetic-camera-info-manager ros-kinetic-ar-track-alvar ros-kinetic-ar-track-alvar-msgs ros-kinetic-image-proc
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/UbiquityRobotics/raspicam_node.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_perceptions.git
+$ cd ~/catkin_ws && catkin_make
+
+$ roscore
+$ rqt_image_view
+$ roslaunch open_manipulator_camera raspicam.launch
+$ roslaunch open_manipulator_ar_markers ar_pose.launch camera_model:=raspicam
+
+<<<<<<< HEAD
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/my_map.yaml
+
+# Activity: Challenge
+
+1. Copy all files under “models” folder (i.e. floor_parquest2, maze_1_6x5, etc)
+2. Navigate to Home >> .gazebo (type clt-H to review hidden files) >> models
+3. Paste all copied model files in this folder
+4. Copy all files under “launch” folder (i.e. turtlebot3_maze1.launch, etc)
+5. And navigate to src >> turtlebot3_simulations >> turtlebot3_gazebo >> launch
+6. Paste all copied launch files in this folder
+7  Copy all files under  “world” folder (i.e. maze_1_6x5.world, etc)
+8. And navigate to src >> turtlebot3_simulations >> turtlebot3_gazebo >> worlds
+9. Paste all copied world files in this folder
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_maze1.launch
+(terminal 2)
+$ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+(terminal 3)
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+(terminal 4)
+$ rosrun map_server map_saver -f ~/maze1
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_maze1.launch
+(terminal 2)
+$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/maze1.yaml
+
+
+
+=======
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e

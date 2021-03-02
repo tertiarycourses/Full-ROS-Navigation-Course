@@ -1,0 +1,135 @@
+
+<<<<<<< HEAD
+## Install ROS 1 on Remote PC
+=======
+# Install Moveit 1.0
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+$ rosdep update
+$ sudo apt-get update
+$ sudo apt-get upgrade
+
+$ sudo apt-get install ros-kinetic-moveit
+
+# Activity: Launch Moveit Package
+
+$ cd ~/catkin_ws/src/
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_controls.git
+$ git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
+$ cd ~/catkin_ws && catkin_make
+$ roslaunch open_manipulator_controllers joint_trajectory_controller.launch sim:=false
+
+# Activity: TB3+OM with Moveit 
+
+$ roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+$ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+$ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
+
+<<<<<<< HEAD
+# Setup Raspberry Pi SBC
+=======
+# Activity: Install Panda with Moveit
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+cd ~/catkin_ws/src
+git clone -b kinetic-devel https://github.com/ros-planning/moveit_tutorials.git
+git clone -b kinetic-devel https://github.com/ros-planning/panda_moveit_config.git
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+
+# Activity: Panda Robot Moveit Demo
+
+roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
+
+
+<<<<<<< HEAD
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic_rp3.sh && chmod 755 ./install_ros_kinetic_rp3.sh && bash ./install_ros_kinetic_rp3.sh
+
+## 3) Install Dependent Packages on TurtleBot PC
+
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+
+$ cd ~/catkin_ws/src/turtlebot3
+$ rm -r turtlebot3_description/ turtlebot3_teleop/ turtlebot3_navigation/ turtlebot3_slam/ turtlebot3_example/
+
+$ sudo apt-get install ros-kinetic-rosserial-python ros-kinetic-tf
+
+$ source /opt/ros/kinetic/setup.bash
+$ cd ~/catkin_ws && catkin_make -j1
+
+## 4) USB Settings
+$ rosrun turtlebot3_bringup create_udev_rules
+
+# Setup OpenCR
+
+## (Recommended) Shell Script
+
+$ sudo dpkg --add-architecture armhf
+$ sudo apt-get update
+$ sudo apt-get install libc6:armhf
+
+$ export OPENCR_PORT=/dev/ttyACM0
+$ export OPENCR_MODEL=burger
+$ rm -rf ./opencr_update.tar.bz2
+$ wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS1/latest/opencr_update.tar.bz2 && tar -xvf opencr_update.tar.bz2 && cd ./opencr_update && ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr && cd ..
+
+# Bring Up Turtlebot
+
+[terminal 1] $ roscore
+
+[terminal 2]
+$ ssh pi@[RASPBERRY PI_IP]
+$ roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+[terminal 3] $ rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz
+
+# Topic Modeling
+=======
+# Activity: Launch TB3+OM with Moveit
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+$ roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+$ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+$ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
+
+<<<<<<< HEAD
+# Teleoperation
+=======
+
+# Move Group Python Interface
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+$ roslaunch panda_moveit_config demo.launch
+$ rosrun moveit_tutorials move_group_python_interface_tutorial.py
+
+# Activity: Pick and Place with Moveit
+
+(terminal 1) roslaunch panda_moveit_config demo.launch
+(terminal 2) rosrun moveit_tutorials pick_place_tutorial
+
+<<<<<<< HEAD
+# SLAM (Gmapping)
+$ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+$ rosrun map_server map_saver -f ~/map
+=======
+# Activity: OM Pick and Place with Moveit
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e
+
+$ roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+$ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
+$ python pick_move_place.py
+
+<<<<<<< HEAD
+$ roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+$ rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_navigation.rviz
+
+
+=======
+>>>>>>> 8c2c24c079ca7f8bb845a5c92e9051047b73972e

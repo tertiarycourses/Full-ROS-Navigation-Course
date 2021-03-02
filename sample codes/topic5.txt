@@ -1,0 +1,28 @@
+# Activity Install the Paho client library by typing:
+
+$ sudo pip install paho-mqtt
+
+## If the above command lines cannot work, type:
+$ sudo pip uninstall paho-mqtt
+$ git clone https://github.com/eclipse/paho.mqtt.python
+$ cd paho.mqtt.python
+$ sudo python setup.py install
+
+
+# Activity: Run the ROS IoT Simulation 
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+$ rosrun demo1 iot.py
+(terminal 3)
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+# Challenge: ROS IoT
+
+(terminal 1)
+$ roslaunch turtlebot3_gazebo turtlebot3_world.launch
+(terminal 2)
+$ rosrun demo1 iot2.py
+(terminal 3)
+$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
